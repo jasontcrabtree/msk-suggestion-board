@@ -1,0 +1,15 @@
+- [x] Create new project & add to GitHub, setup CI/CD
+- [ ] Write to do list
+- [ ] Create folder structure
+- [ ] Add sample data to project
+- [ ] Create initial types: employees, suggestions, department, risk, status, priority, source
+- [ ] Sketch possible layouts based on data
+- [ ] Prototype/iterate on some different filter and layout views
+- [ ] Suggestion status management
+- [ ] Custom suggestion form
+- [ ] Add SQLLite for temp data storage (document in readme decision)
+- [ ] UI polish
+- [ ] Add some automated tests where possible
+- [ ] Final review
+- [ ] Finish README
+- [ ] Document assumptions, architectural decisions, running application instructions
