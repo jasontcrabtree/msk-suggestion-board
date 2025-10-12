@@ -1,4 +1,5 @@
 'use server';
+import { neon } from '@neondatabase/serverless';
 
 import { promises as fs } from 'fs';
 import { Employee } from '@/types/Employee';
@@ -8,6 +9,17 @@ type SampleData = {
   suggestions: Suggestion[];
   employees: Employee[];
 };
+
+export async function getData() {
+  if (!process.env.DATABASE_URL) {
+    throw new Error('DATABASE_URL environment variable is not defined');
+  }
+  const sql = neon(process.env.DATABASE_URL);
+
+  const data = await sql`SELECT * FROM suggestions;`;
+
+  return data;
+}
 
 async function loadData(): Promise<SampleData | null> {
   try {

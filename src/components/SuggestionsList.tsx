@@ -1,21 +1,18 @@
-import { getSuggestions } from '@/lib/actions/data';
+'use client';
 
-const SuggestionsList = async () => {
-  const suggestions = await getSuggestions();
+import { Suggestion } from '@/types/Suggestion';
+import SuggestionCard from './SuggestionCard';
+
+const SuggestionsList = ({ suggestions }: { suggestions: Suggestion[] }) => {
+  if (suggestions.length === 0) {
+    return <div>No suggestions found </div>;
+  }
 
   return (
     <>
       <div className="flex flex-col gap-4">
         {suggestions.map(suggestion => {
-          return (
-            <div
-              key={suggestion.id}
-              className="border border-white p-2 rounded"
-            >
-              <div>{suggestion.notes}</div>
-              <div>{suggestion.description}</div>
-            </div>
-          );
+          return <SuggestionCard suggestion={suggestion} key={suggestion.id} />;
         })}
       </div>
     </>

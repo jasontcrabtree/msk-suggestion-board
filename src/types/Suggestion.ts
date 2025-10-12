@@ -8,6 +8,7 @@ export type Suggestion = {
   source: Source;
   dateCreated: Date;
   dateUpdated: Date;
+  dateCompleted?: Date;
   notes: string;
 };
 
