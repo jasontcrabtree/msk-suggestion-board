@@ -44,3 +44,6 @@ export function formatStatus(status: string): string {
   const capitalizeWords = splitWords.map(word => capitalizeWord(word));
   return capitalizeWords.join(' ');
 }
+
+// TODO - might be a cleaner way of fetching from db
+export const statuses = ['pending', 'completed', 'in_progress', 'overdue'];

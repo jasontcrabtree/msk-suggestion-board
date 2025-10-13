@@ -10,6 +10,7 @@ export type Suggestion = {
   dateUpdated: Date;
   dateCompleted?: Date;
   notes: string;
+  createdBy: string;
 };
 
 enum SuggestionType {

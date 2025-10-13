@@ -1,3 +1,4 @@
+-- SQL command to make db based on provided data set
 CREATE TABLE IF NOT EXISTS suggestions (
   id UUID PRIMARY KEY,
   employeeId UUID NOT NULL,
@@ -9,5 +10,6 @@ CREATE TABLE IF NOT EXISTS suggestions (
   dateCreated TIMESTAMP NOT NULL,
   dateUpdated TIMESTAMP NOT NULL,
   dateCompleted TIMESTAMP,
-  notes TEXT
+  notes TEXT,
+  createdBy VARCHAR
 );

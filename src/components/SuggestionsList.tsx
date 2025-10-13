@@ -8,6 +8,8 @@ const SuggestionsList = ({ suggestions }: { suggestions: Suggestion[] }) => {
     return <div>No suggestions found </div>;
   }
 
+  console.log(suggestions);
+
   return (
     <>
       <div className="flex flex-col gap-4">

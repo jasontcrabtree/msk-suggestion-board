@@ -1,58 +1,54 @@
 'use server';
-import { neon } from '@neondatabase/serverless';
 
-import { promises as fs } from 'fs';
 import { Employee } from '@/types/Employee';
 import { Suggestion } from '@/types/Suggestion';
+import { dbConnection } from '../db';
 
-type SampleData = {
-  suggestions: Suggestion[];
-  employees: Employee[];
-};
+// export async function getData() {
+//   const data = await sql`SELECT * FROM suggestions;`;
 
-export async function getData() {
-  if (!process.env.DATABASE_URL) {
-    throw new Error('DATABASE_URL environment variable is not defined');
-  }
-  const sql = neon(process.env.DATABASE_URL);
+//   return data;
+// }
 
-  const data = await sql`SELECT * FROM suggestions;`;
+// async function loadData(): Promise<SampleData | null> {
+//   try {
+//     const file = await fs.readFile(
+//       process.cwd() + '/src/data/sample-data.json',
+//       'utf8'
+//     );
 
-  return data;
-}
+//     return JSON.parse(file) as SampleData;
+//   } catch (error) {
+//     console.error('Failed to load sample data with error:', error);
+//     return null;
+//   }
+// }
 
-async function loadData(): Promise<SampleData | null> {
+export async function getSuggestions(): Promise<Suggestion[] | []> {
   try {
-    const file = await fs.readFile(
-      process.cwd() + '/src/data/sample-data.json',
-      'utf8'
-    );
+    // Selecting all columns in the table doesn't scale, this would be one of the first refactor areas (adding an ORM or different strategy of data fetching)
+    const data =
+      await dbConnection`SELECT * FROM suggestions ORDER BY "dateCreated" DESC;`;
 
-    return JSON.parse(file) as SampleData;
+    if (!data) {
+      return [];
+    }
+
+    // In other circumstances I might use soomething like zod or prisma for tighter schemer validation, but this gives type errors during dev at least
+    return data as Suggestion[];
   } catch (error) {
-    console.error('Failed to load sample data with error:', error);
-    return null;
-  }
-}
-
-export async function getSuggestions(): Promise<Suggestion[]> {
-  const data = await loadData();
-
-  if (!data || !data.suggestions) {
-    console.error('No suggestions found in the data');
+    console.error(error);
     return [];
   }
-
-  return data.suggestions;
 }
 
-export async function getEmployees(): Promise<Employee[]> {
-  const data = await loadData();
+// export async function getEmployees(): Promise<Employee[]> {
+//   const data = await loadData();
 
-  if (!data || !data.employees) {
-    console.error('No employees found in the data');
-    return [];
-  }
+//   if (!data || !data.employees) {
+//     console.error('No employees found in the data');
+//     return [];
+//   }
 
-  return data.employees;
-}
+//   return data.employees;
+// }
