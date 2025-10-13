@@ -32,6 +32,10 @@ export default async function Home() {
         })}
       </div>
 
+      <label>
+        Checkbox: <input type="checkbox" name="myCheckbox" />
+      </label>
+
       <SuggestionsList suggestions={suggestionData} />
       {/* <EmployeesList employees={employeeData} /> */}
     </div>
