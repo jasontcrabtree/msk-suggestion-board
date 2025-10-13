@@ -1,6 +1,6 @@
 'use server';
 
-import { Employee } from '@/types/Employee';
+// import { Employee } from '@/types/Employee';
 import { Suggestion } from '@/types/Suggestion';
 import { dbConnection } from '../db';
 

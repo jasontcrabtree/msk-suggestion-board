@@ -1,4 +1,4 @@
-import EmployeesList from '@/components/EmployeesList';
+// import EmployeesList from '@/components/EmployeesList';
 import SuggestionsList from '@/components/SuggestionsList';
 import { getSuggestions } from '@/lib/actions/data';
 import { formatStatus, statuses } from '@/lib/utils';

@@ -3,7 +3,7 @@
  * @param inputDate
  * @returns Formatted date as text string
  */
-export const formatDate = (inputDate: Date): String => {
+export const formatDate = (inputDate: Date): string => {
   if (!inputDate) {
     return '';
   }

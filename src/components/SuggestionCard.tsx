@@ -3,15 +3,15 @@ import { updateStatus } from '@/lib/actions/mutations';
 import { statuses } from '@/lib/utils';
 import { capitalizeWord, formatDate, formatStatus } from '@/lib/utils';
 import { Suggestion } from '@/types/Suggestion';
-import { useEffect, useState } from 'react';
+// import { useState } from 'react';
 
 const SuggestionCard = ({ suggestion }: { suggestion: Suggestion }) => {
-  const [count, setCount] = useState(0);
-  const [text, setText] = useState('');
+  // const [count, setCount] = useState(0);
+  // const [text, setText] = useState('');
 
-  function handleClick() {
-    setCount(count + 1);
-  }
+  // function handleClick() {
+  //   setCount(count + 1);
+  // }
 
   // function hardcodedStatusUpdate() {
   //   updateStatus({
@@ -32,7 +32,7 @@ const SuggestionCard = ({ suggestion }: { suggestion: Suggestion }) => {
   return (
     <>
       <div className="flex flex-col gap-4">
-        <h1>{text}</h1>
+        {/* <h1>{text}</h1> */}
         <div key={suggestion.id} className="border border-black p-2 rounded-xl">
           {/* <p>Counqt is: {count}</p>
           <button onClick={handleClick}>Increment count</button> */}
