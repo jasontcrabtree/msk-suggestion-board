@@ -41,7 +41,7 @@ const SuggestionForm = ({
         <span className="label">
           Status<span className="text-red-300">*</span>
         </span>
-        <div className="flex flex-row gap-4 items-center">
+        <div className="flex gap-4 flex-col md:flex-row items-start md:items-center">
           {statuses.map((status: string) => {
             return (
               <label
@@ -80,7 +80,7 @@ const SuggestionForm = ({
         <span className="label">
           Type<span className="text-red-300">*</span>
         </span>
-        <div className="flex flex-row gap-4 items-center">
+        <div className="flex gap-4 flex-col md:flex-row items-start md:items-center">
           {suggestionTypeOptions.map((type: string) => {
             return (
               <label
@@ -105,7 +105,7 @@ const SuggestionForm = ({
         <span className="label">
           Priority<span className="text-red-300">*</span>
         </span>
-        <div className="flex flex-row gap-4 items-center">
+        <div className="flex gap-4 flex-row items-start md:items-center">
           {priotityOptions.map((priority: string) => {
             const colourCodedOptions: Record<string, string> = {
               low: 'bg-yellow-100 border-yellow-300',

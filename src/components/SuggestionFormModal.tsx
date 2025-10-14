@@ -8,8 +8,8 @@ import { useState } from 'react';
 
 const modalButton = () => {
   return (
-    <div className="flex flex-row gap-4 items-center">
-      Add Suggestion
+    <div className="flex flex-row gap-2 items-center">
+      New
       <PlusCircle size={20} />
     </div>
   );

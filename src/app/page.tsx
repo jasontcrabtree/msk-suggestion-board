@@ -15,7 +15,7 @@ export default async function Home() {
         <div className="w-full mx-auto max-w-[1080px] flex flex-row gap-4 p-4 items-center justify-between h-[8vh]">
           <h1 className="text-xl font-bold text-indigo-700 flex flex-row items-center gap-2">
             <HeartPlus strokeWidth={2} size={24} />
-            MSK Management Board
+            MSK Helpboard
           </h1>
           <SuggestionFormModal employees={employees} />
         </div>
