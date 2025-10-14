@@ -2,13 +2,13 @@
 - [x] Write to do list
 - [x] Create folder structure
 - [x] Add sample data to project
-- [ ] Deploy dev (main) and production (production) branches, continue to deploy via GH
-- [ ] Create initial types: employees, suggestions, department, risk, status, priority, source
+- [x] Deploy dev (main) and production (production) branches, continue to deploy via GH
+- [x] Create initial types: employees, suggestions, department, risk, status, priority, source
 - [ ] Sketch possible layouts based on data
 - [ ] Prototype/iterate on some different filter and layout views
-- [ ] Suggestion status management
+- [x] Suggestion status management
 - [ ] Custom suggestion form
-- [ ] Add SQLLite for temp data storage (document in readme decision)
+- [x] Add SQLLite for temp data storage (document in readme decision)
 - [ ] UI polish
 - [ ] Add some automated tests where possible
 - [ ] Final review

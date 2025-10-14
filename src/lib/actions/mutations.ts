@@ -1,17 +1,7 @@
 'use server';
 
+import { revalidatePath } from 'next/cache';
 import { dbConnection } from '../db';
-
-// import { dbConnection } from '../db';
-
-// import { neon } from '@neondatabase/serverless';
-
-// if (!process.env.DATABASE_URL) {
-//   throw new Error('DATABASE_URL environment variable is not defined');
-// }
-
-// // singleton connection
-// const sql = neon(process.env.DATABASE_URL);
 
 export async function updateStatus({
   id,
@@ -21,16 +11,57 @@ export async function updateStatus({
   suggestionStatus: string;
 }) {
   try {
-    console.log('inside func', id, suggestionStatus);
-    const res = await dbConnection`UPDATE suggestions
-                                    SET status = ${suggestionStatus}
-                                    WHERE id = ${id};`;
-    console.log('res', res);
+    await dbConnection`
+        UPDATE suggestions
+        SET status = ${suggestionStatus}
+        WHERE id = ${id};
+    `;
+
+    // Refetch page
+    revalidatePath('/');
   } catch (error) {
     console.error(error);
   }
 }
 
-// ⨯ [Error: This function can now be called only as a tagged-template function: sql`SELECT ${value}`, not sql("SELECT $1", [value], options). For a conventional function call with value placeholders ($1, $2, etc.), use sql.query("SELECT $1", [value], options).] {
-//   digest: '600749161'
-// }
+export async function createSuggestion(formData: FormData) {
+  const title = formData.get('itemID');
+  const content = formData.get('content');
+
+  const data = {
+    ...Object.fromEntries(formData.entries()),
+  };
+
+  console.log('data', data);
+  console.log('data', data.itemID);
+
+  try {
+    await dbConnection`
+    INSERT INTO suggestions
+    (
+        type,
+        description,
+        status,
+        priority,
+        source,
+        "dateCompleted",
+        notes,
+        "createdBy"
+    )
+    VALUES
+    (
+        'type test via app',
+        'desc',
+        'status',
+        'prior',
+        'source',
+        NULL,
+        'notes',
+        'jason'
+    )`;
+  } catch (error) {
+    console.log(error);
+  }
+
+  revalidatePath('/');
+}

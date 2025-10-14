@@ -1,3 +1,5 @@
+import { Suggestion } from '@/types/Suggestion';
+
 /**
  * Takes ISO-Z date and formats to human readable string
  * @param inputDate
@@ -47,3 +49,14 @@ export function formatStatus(status: string): string {
 
 // TODO - might be a cleaner way of fetching from db
 export const statuses = ['pending', 'completed', 'in_progress', 'overdue'];
+
+export function filterSuggestionsBySelectedItems(
+  allItems: Suggestion[],
+  filters: string | any[]
+) {
+  const filtered = allItems.filter((s: { status: string }) =>
+    filters.includes(s.status)
+  );
+
+  return filtered;
+}
