@@ -1,13 +1,14 @@
 'use client';
+import { X } from 'lucide-react';
 import { useEffect } from 'react';
 
 const Modal = ({
-  modalLabel,
+  modalButtonContent,
   children,
   isOpen,
   stateHandler,
 }: {
-  modalLabel: string;
+  modalButtonContent: () => React.ReactNode;
   children: React.ReactNode;
   isOpen: boolean;
   stateHandler: (isOpen: boolean) => void;
@@ -27,8 +28,8 @@ const Modal = ({
   return (
     <div>
       {!isOpen && (
-        <button className="border py-1 px-6 rounded" onClick={handleModal}>
-          {modalLabel}
+        <button className="primary-button" onClick={handleModal}>
+          {modalButtonContent()}
         </button>
       )}
 
@@ -38,16 +39,16 @@ const Modal = ({
           onClick={handleModal}
         >
           <button
-            className="border py-1 px-6 rounded bg-white absolute right-6 top-6"
+            className="12 h-12 p-3 rounded absolute right-6 top-6 hover:cursor-pointer"
             onClick={handleModal}
           >
-            Close
+            <X size={24} color={'white'} />
           </button>
           <div
-            className="relative bg-white shadow-xl w-[90%] max-w-[720px] max-h-[90vh] rounded-2xl"
+            className="relative bg-white shadow-xl w-[90%] max-w-[720px] h-full max-h-[92vh] rounded-lg"
             onClick={e => e.stopPropagation()}
           >
-            <div className="overflow-y-auto max-h-[85vh]">{children}</div>
+            <div className="overflow-y-auto max-h-[92vh]">{children}</div>
           </div>
         </div>
       )}

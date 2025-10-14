@@ -15,7 +15,7 @@ const EmployeesSelect = ({
   return (
     <>
       <select
-        className="border p-2"
+        className="input pr-4"
         name="employeeId"
         id="employeeId"
         defaultValue={''}

@@ -33,7 +33,7 @@ const SuggestionCard = ({ suggestion }: { suggestion: Suggestion }) => {
           <p>Created by {suggestion.createdBy}</p>
 
           <select
-            className="border rounded-full px-2 bg-blue-100 font-semibold py-1"
+            className="border rounded-full px-2 bg-indigo-100 font-semibold py-1"
             name={suggestion.id + suggestion.status}
             id={suggestion.id}
             defaultValue={suggestion.status}

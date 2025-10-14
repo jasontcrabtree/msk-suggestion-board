@@ -24,21 +24,33 @@ const SuggestionForm = ({
         await createSuggestion(formData);
         onFormSuccess();
       }}
-      className="flex flex-col gap-4 p-8"
+      className="flex flex-col gap-4 p-6 justify-center shadow"
     >
-      <EmployeesSelect employees={employees} />
+      <h2 className="text-xl font-semibold text-indigo-600">
+        Add New Suggestion
+      </h2>
+
+      <label htmlFor="employeeId">
+        <span className="label">
+          Assign to<span className="text-red-300">*</span>
+        </span>
+        <EmployeesSelect employees={employees} />
+      </label>
 
       <div className="">
-        <span className="font-semibold">Status*</span>
-        <div className="flex flex-row gap-2 items-center">
+        <span className="label">
+          Status<span className="text-red-300">*</span>
+        </span>
+        <div className="flex flex-row gap-4 items-center">
           {statuses.map((status: string) => {
             return (
               <label
                 key={status}
                 htmlFor={status}
-                className="flex flex-row gap-2 items-center"
+                className="flex flex-row gap-1 items-center"
               >
                 <input
+                  className=""
                   type="radio"
                   name={'status'}
                   id={status}
@@ -52,25 +64,29 @@ const SuggestionForm = ({
         </div>
       </div>
       <label htmlFor="description" className="flex flex-col gap-2">
-        <span className="font-semibold">Description*</span>
+        <span className="label">
+          Description<span className="text-red-300">*</span>
+        </span>
         <textarea
           name="description"
           id=""
           cols={12}
           rows={2}
-          className="border p-2 rounded"
+          className="input"
           required
         ></textarea>
       </label>
       <div>
-        <span className="font-semibold">Type*</span>
-        <div className="flex flex-row gap-2 items-center">
+        <span className="label">
+          Type<span className="text-red-300">*</span>
+        </span>
+        <div className="flex flex-row gap-4 items-center">
           {suggestionTypeOptions.map((type: string) => {
             return (
               <label
                 key={type}
                 htmlFor={type}
-                className="flex flex-row gap-2 items-center"
+                className="flex flex-row gap-1 items-center"
               >
                 <input
                   type="radio"
@@ -86,14 +102,21 @@ const SuggestionForm = ({
         </div>
       </div>
       <div>
-        <span className="font-semibold">Priority*</span>
-        <div className="flex flex-row gap-2 items-center">
+        <span className="label">
+          Priority<span className="text-red-300">*</span>
+        </span>
+        <div className="flex flex-row gap-4 items-center">
           {priotityOptions.map((priority: string) => {
+            const colourCodedOptions: Record<string, string> = {
+              low: 'bg-yellow-100 border-yellow-300',
+              medium: 'bg-blue-50 border-blue-200',
+              high: 'bg-red-50 border-red-300',
+            };
             return (
               <label
                 key={priority}
                 htmlFor={priority}
-                className="flex flex-row gap-2 items-center border p-1"
+                className={`flex flex-row gap-1 items-center  border  rounded-sm px-2 py-1 ${colourCodedOptions[priority]}`}
               >
                 <input
                   type="radio"
@@ -109,32 +132,30 @@ const SuggestionForm = ({
         </div>
       </div>
       <label htmlFor="notes" className="flex flex-col gap-2">
-        <span className="font-semibold">Notes</span>
+        <span className="label">Notes</span>
         <textarea
           name="notes"
           id=""
           cols={12}
           rows={3}
-          className="border p-2 rounded"
+          className="input"
         ></textarea>
       </label>
       <label htmlFor="createdBy" className="flex flex-col gap-2">
-        <span className="font-semibold">Created by</span>
-        <input type="email" name="" id="" className="border" />
+        <span className="label">Created by</span>
+        <input type="email" name="" id="" className="input" />
       </label>
       <label htmlFor="completedDate" className="flex flex-col gap-2">
-        <span className="font-semibold">Completed</span>
+        <span className="label">Completed</span>
         <input
           type="date"
           name="completedDate"
           id="completedDate"
-          className="border w-fit p-1 rounded"
+          className="input"
         />
       </label>
-      <button
-        className="border px-12 py-2 rounded bg-gray-200 semibold w-fit"
-        type="submit"
-      >
+
+      <button className="primary-button" type="submit">
         Submit Suggestion
       </button>
     </form>

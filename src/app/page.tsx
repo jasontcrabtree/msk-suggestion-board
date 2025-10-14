@@ -1,6 +1,7 @@
 import { getEmployees, getSuggestions } from '@/lib/actions/data';
 import SuggestionFormModal from '@/components/SuggestionFormModal';
 import SuggestionsParent from '@/components/SuggestionsParent';
+import { HeartPlus } from 'lucide-react';
 
 export default async function Home() {
   const suggestionData = await getSuggestions();
@@ -9,10 +10,15 @@ export default async function Home() {
   console.log('employees', employees);
 
   return (
-    <div className="p-16 mx-auto max-w-[1280px] flex flex-col gap-2">
-      <div className="flex flex-row w-full items-center justify-between gap-2">
-        <h1 className="text-xl font-bold">MSK Management</h1>
-        <SuggestionFormModal employees={employees} />
+    <div className="flex flex-col">
+      <div className="bg-slate-50 shadow-md">
+        <div className="w-full mx-auto max-w-[1080px] flex flex-row gap-4 p-4 items-center justify-between h-[8vh]">
+          <h1 className="text-xl font-bold text-indigo-700 flex flex-row items-center gap-2">
+            <HeartPlus strokeWidth={2} size={24} />
+            MSK Management Board
+          </h1>
+          <SuggestionFormModal employees={employees} />
+        </div>
       </div>
       <SuggestionsParent suggestions={suggestionData} employees={employees} />
     </div>
