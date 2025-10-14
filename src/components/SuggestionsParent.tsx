@@ -9,13 +9,7 @@ import { useMemo, useState } from 'react';
 import SuggestionFilters from './SuggestionFilters';
 import EmployeesSelect from './EmployeesSelect';
 import { Employee } from '@/types/Employee';
-import {
-  ChevronDown,
-  ChevronsDownUp,
-  ChevronsUpDown,
-  ChevronUp,
-  UnfoldVertical,
-} from 'lucide-react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const SuggestionsParent = ({
   suggestions,
