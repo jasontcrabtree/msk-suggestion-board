@@ -9,7 +9,6 @@ import { useMemo, useState } from 'react';
 import SuggestionFilters from './SuggestionFilters';
 import EmployeesSelect from './EmployeesSelect';
 import { Employee } from '@/types/Employee';
-import { IdCardLanyard, ShieldAlert } from 'lucide-react';
 
 const SuggestionsParent = ({
   suggestions,
