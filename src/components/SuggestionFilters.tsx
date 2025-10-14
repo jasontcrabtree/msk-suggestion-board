@@ -29,7 +29,10 @@ const SuggestionFilters = ({
 
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor="all">
+      <label
+        htmlFor="all"
+        className="flex flex-row items-center gap-2 flex-nowrap"
+      >
         <input
           type="checkbox"
           name="statusCheckboxes"
@@ -37,7 +40,7 @@ const SuggestionFilters = ({
           value="all"
           checked={allStatusesSelected}
           onChange={() => handleSelectedStatusChange('all')}
-        />{' '}
+        />
         Show All
       </label>
       {statuses.map((status: string) => {
@@ -54,7 +57,7 @@ const SuggestionFilters = ({
               value={status}
               checked={selectedFilters.includes(status)}
               onChange={() => handleSelectedStatusChange(status)}
-            />{' '}
+            />
             {formatLabel(status)}
           </label>
         );

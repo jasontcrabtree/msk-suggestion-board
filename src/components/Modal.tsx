@@ -45,10 +45,10 @@ const Modal = ({
             <X size={24} />
           </button>
           <div
-            className="relative bg-white shadow-xl w-full md:w-[90%] max-w-[720px] min-h-[100dvh] md:min-h-0 rounded-none md:rounded-lg mx-auto my-0 md:my-auto"
+            className="relative bg-white shadow-xl w-full md:w-[90%] max-w-[720px] h-fit md:min-h-0 rounded-none md:rounded-lg mx-auto my-0 md:my-auto"
             onClick={e => e.stopPropagation()}
           >
-            <div className="overflow-y-auto max-h-[100vh] scrollbar-visible">
+            <div className="overflow-y-auto h-fit md:max-h-[100vh] scrollbar-visible">
               {children}
             </div>
           </div>
