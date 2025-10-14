@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-// @ts-expect-error import error out of scope for now
 import './globals.css';
 
 const inter = Inter({
