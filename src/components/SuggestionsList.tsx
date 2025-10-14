@@ -9,13 +9,14 @@ const SuggestionsList = ({ suggestions }: { suggestions: Suggestion[] }) => {
   }
 
   return (
-    <>
+    <div className="flex-4">
+      <h2 className="md-heading mb-1">Suggestions</h2>
       <div className="flex flex-col gap-4">
         {suggestions.map(suggestion => {
           return <SuggestionCard suggestion={suggestion} key={suggestion.id} />;
         })}
       </div>
-    </>
+    </div>
   );
 };
 

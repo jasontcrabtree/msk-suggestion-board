@@ -1,7 +1,8 @@
 'use client';
 import { updateStatus } from '@/lib/actions/mutations';
-import { statuses } from '@/lib/utils';
-import { capitalizeWord, formatDate, formatStatus } from '@/lib/utils';
+import { statuses } from '@/lib/formFields';
+
+import { capitalizeWord, formatDate, formatLabel } from '@/lib/utils';
 import { Suggestion } from '@/types/Suggestion';
 
 const SuggestionCard = ({ suggestion }: { suggestion: Suggestion }) => {
@@ -9,6 +10,7 @@ const SuggestionCard = ({ suggestion }: { suggestion: Suggestion }) => {
     <>
       <div className="flex flex-col gap-4">
         <div key={suggestion.id} className="border border-black p-2 rounded-xl">
+          {suggestion.employeeName && <p>{suggestion.employeeName}</p>}
           <p>Created: {formatDate(suggestion.dateCreated)}</p>
           <p>Updated: {formatDate(suggestion.dateUpdated)}</p>
           <div>
@@ -45,7 +47,7 @@ const SuggestionCard = ({ suggestion }: { suggestion: Suggestion }) => {
             {statuses.map((status: string) => {
               return (
                 <option key={status} value={status}>
-                  {formatStatus(status)}
+                  {formatLabel(status)}
                 </option>
               );
             })}

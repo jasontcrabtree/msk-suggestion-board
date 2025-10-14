@@ -3,6 +3,7 @@
 // import { Employee } from '@/types/Employee';
 import { Suggestion } from '@/types/Suggestion';
 import { dbConnection } from '../db';
+import { Employee } from '@/types/Employee';
 
 // export async function getData() {
 //   const data = await sql`SELECT * FROM suggestions;`;
@@ -27,9 +28,12 @@ import { dbConnection } from '../db';
 export async function getSuggestions(): Promise<Suggestion[] | []> {
   try {
     // Selecting all columns in the table doesn't scale, this would be one of the first refactor areas (adding an ORM or different strategy of data fetching)
-    const data =
-      await dbConnection`SELECT * FROM suggestions ORDER BY "dateCreated" DESC;`;
-
+    const data = await dbConnection`
+        SELECT s.*, e.name AS "employeeName"
+        FROM suggestions s
+        JOIN employees e ON s."employeeId" = e.id
+        ORDER BY s."dateCreated" DESC;
+        `;
     if (!data) {
       return [];
     }
@@ -42,13 +46,20 @@ export async function getSuggestions(): Promise<Suggestion[] | []> {
   }
 }
 
-// export async function getEmployees(): Promise<Employee[]> {
-//   const data = await loadData();
+export async function getEmployees(): Promise<Employee[] | []> {
+  try {
+    const data = await dbConnection`
+        SELECT * FROM employees
+        ORDER BY name ASC;
+      `;
 
-//   if (!data || !data.employees) {
-//     console.error('No employees found in the data');
-//     return [];
-//   }
+    if (!data) {
+      return [];
+    }
 
-//   return data.employees;
-// }
+    return data as Employee[];
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}

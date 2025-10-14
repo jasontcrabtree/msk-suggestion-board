@@ -33,26 +33,23 @@ export function capitalizeWord(inputStr: string): string {
 }
 
 /**
- *  Formats the API status result in a readable way. Additional formatting steps can be added in the futrue
- * @param status API output string
+ *  Formats the API label result in a readable way. Additional formatting steps can be added in the futrue
+ * @param str API output string
  * @returns Human formatted string
  */
-export function formatStatus(status: string): string {
-  if (!status) {
+export function formatLabel(str: string): string {
+  if (!str) {
     return '';
   }
 
-  const splitWords = status.split('_');
+  const splitWords = str.split('_');
   const capitalizeWords = splitWords.map(word => capitalizeWord(word));
   return capitalizeWords.join(' ');
 }
 
-// TODO - might be a cleaner way of fetching from db
-export const statuses = ['pending', 'completed', 'in_progress', 'overdue'];
-
 export function filterSuggestionsBySelectedItems(
   allItems: Suggestion[],
-  filters: string | any[]
+  filters: string[]
 ) {
   const filtered = allItems.filter((s: { status: string }) =>
     filters.includes(s.status)

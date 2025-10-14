@@ -1,75 +1,60 @@
 'use client';
 
 import SuggestionsList from '@/components/SuggestionsList';
-import {
-  filterSuggestionsBySelectedItems,
-  formatStatus,
-  statuses,
-} from '@/lib/utils';
+import { statuses } from '@/lib/formFields';
+
+import { filterSuggestionsBySelectedItems } from '@/lib/utils';
 import { Suggestion } from '@/types/Suggestion';
 import { useMemo, useState } from 'react';
+import SuggestionFilters from './SuggestionFilters';
+import EmployeesSelect from './EmployeesSelect';
+import { Employee } from '@/types/Employee';
 
-const SuggestionsParent = ({ suggestions }: { suggestions: Suggestion[] }) => {
-  const [selected, setSelected] = useState([...statuses]);
-  const allStatusesSelected = selected.length === statuses.length;
+const SuggestionsParent = ({
+  suggestions,
+  employees,
+}: {
+  suggestions: Suggestion[];
+  employees: Employee[];
+}) => {
+  const [checkedStatuses, setCheckedStatuses] = useState([...statuses]);
+  const [selectedEmployee, setSelectedEmployee] = useState('');
 
-  const handleSelectedStatusChange = (status: string) => {
-    if (status === 'all') {
-      if (allStatusesSelected) {
-        setSelected([]);
-      } else {
-        setSelected([...statuses]);
-      }
-    } else {
-      setSelected(prev =>
-        prev.includes(status)
-          ? prev.filter(s => s !== status)
-          : [...prev, status]
-      );
+  const filteredSuggestions = useMemo(() => {
+    let results = filterSuggestionsBySelectedItems(
+      suggestions,
+      checkedStatuses
+    );
+    if (selectedEmployee.length > 0) {
+      results = results.filter(s => s.employeeId === selectedEmployee);
     }
-  };
-
-  const filteredSuggestions = useMemo(
-    () => filterSuggestionsBySelectedItems(suggestions, selected),
-    [suggestions, selected]
-  );
+    return results;
+  }, [suggestions, checkedStatuses, selectedEmployee]);
 
   return (
-    <>
-      <div className="flex flex-row gap-6 flex-wrap">
-        <label htmlFor="all">
-          <input
-            type="checkbox"
-            name="statusCheckboxes"
-            id="all"
-            value="all"
-            checked={allStatusesSelected}
-            onChange={() => handleSelectedStatusChange('all')}
-          />{' '}
-          Show All
-        </label>
-        {statuses.map((status: string) => {
-          return (
-            <label
-              htmlFor={status}
-              key={status}
-              className="flex flex-row items-center gap-2 flex-nowrap"
-            >
-              <input
-                type="checkbox"
-                name="statusCheckboxes"
-                id={status}
-                value={status}
-                checked={selected.includes(status)}
-                onChange={() => handleSelectedStatusChange(status)}
-              />{' '}
-              {formatStatus(status)}
-            </label>
-          );
-        })}
+    <div className="flex flex-row gap-8 items-start">
+      <div className="flex flex-col gap-8 flex-1">
+        <div className="flex flex-col gap-1">
+          <h3 className="md-heading">Filter by Employee</h3>
+          <EmployeesSelect
+            employees={employees}
+            changeHandler={e => {
+              setSelectedEmployee(e.target.value);
+            }}
+          />
+        </div>
+
+        <div className="flex flex-col gap-1">
+          <h3 className="md-heading">Filter by Status</h3>
+          <SuggestionFilters
+            selectedFilters={checkedStatuses}
+            stateHandler={setCheckedStatuses}
+          />
+        </div>
       </div>
+
       <SuggestionsList suggestions={filteredSuggestions} />
-    </>
+    </div>
   );
 };
 

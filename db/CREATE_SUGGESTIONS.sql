@@ -1,15 +1,16 @@
--- SQL command to make db based on provided data set
+-- Postgresql script to make db based on provided data set
+
 CREATE TABLE IF NOT EXISTS suggestions (
-  id UUID PRIMARY KEY,
-  employeeId UUID NOT NULL,
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  employeeId UUID NOT NULL REFERENCES employees(id),
   type TEXT NOT NULL,
   description TEXT NOT NULL,
   status TEXT NOT NULL,
   priority TEXT,
   source TEXT,
-  dateCreated TIMESTAMP NOT NULL,
-  dateUpdated TIMESTAMP NOT NULL,
-  dateCompleted TIMESTAMP,
   notes TEXT,
-  createdBy VARCHAR
+  createdBy VARCHAR,
+  dateCreated TIMESTAMP DEFAULT now(),
+  dateUpdated TIMESTAMP DEFAULT now(),
+  dateCompleted TIMESTAMP
 );

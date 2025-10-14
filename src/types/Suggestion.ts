@@ -11,6 +11,7 @@ export type Suggestion = {
   dateCompleted?: Date;
   notes: string;
   createdBy: string;
+  employeeName?: string;
 };
 
 enum SuggestionType {

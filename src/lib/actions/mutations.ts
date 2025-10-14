@@ -25,40 +25,35 @@ export async function updateStatus({
 }
 
 export async function createSuggestion(formData: FormData) {
-  const title = formData.get('itemID');
-  const content = formData.get('content');
+  type suggestionFormData = {
+    employeeId: string;
+    type: string;
+    description: string;
+    status: string;
+    priority: string;
+    source: string;
+    dateCompleted?: string;
+    notes?: string;
+    createdBy?: string;
+  };
 
   const data = {
     ...Object.fromEntries(formData.entries()),
-  };
+  } as suggestionFormData;
 
-  console.log('data', data);
-  console.log('data', data.itemID);
+  // Suggestions created via the form are admin generated, remainder are VIDA
+  const suggestionSource = 'admin';
 
   try {
     await dbConnection`
     INSERT INTO suggestions
     (
-        type,
-        description,
-        status,
-        priority,
-        source,
-        "dateCompleted",
-        notes,
-        "createdBy"
+        "employeeId", type, description, status, priority, source, "dateCompleted", notes,"createdBy"
     )
     VALUES
     (
-        'type test via app',
-        'desc',
-        'status',
-        'prior',
-        'source',
-        NULL,
-        'notes',
-        'jason'
-    )`;
+        ${data.employeeId}, ${data.type}, ${data.description}, ${data.status}, ${data.priority}, ${suggestionSource}, ${data.dateCompleted}, ${data.notes}, ${data.createdBy}
+    );`;
   } catch (error) {
     console.log(error);
   }
