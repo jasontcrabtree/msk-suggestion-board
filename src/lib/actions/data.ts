@@ -1,29 +1,14 @@
+/*
+  - Server actions for fetching data. These will always run on the server (either local or vercel)
+  - Makes use of dbConnection singleton connection to the neon db
+  - Uses string literals for sql per neon recommendations. This scales at this level but past a certain level an ORM or tool like Zod or Zustand for schema validation could be considered
+  - Makes use of a postgre join to fetch the names of the employees associated with each suggestion
+*/
 'use server';
 
-// import { Employee } from '@/types/Employee';
 import { Suggestion } from '@/types/Suggestion';
 import { dbConnection } from '../db';
 import { Employee } from '@/types/Employee';
-
-// export async function getData() {
-//   const data = await sql`SELECT * FROM suggestions;`;
-
-//   return data;
-// }
-
-// async function loadData(): Promise<SampleData | null> {
-//   try {
-//     const file = await fs.readFile(
-//       process.cwd() + '/src/data/sample-data.json',
-//       'utf8'
-//     );
-
-//     return JSON.parse(file) as SampleData;
-//   } catch (error) {
-//     console.error('Failed to load sample data with error:', error);
-//     return null;
-//   }
-// }
 
 export async function getSuggestions(): Promise<Suggestion[] | []> {
   try {

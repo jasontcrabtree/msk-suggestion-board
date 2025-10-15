@@ -1,3 +1,10 @@
+/*
+  - Client side form that collects data for new suggestions
+  - Uses a server side mutation createSuggestion to actually submit the results
+  - Takes in a callback prop called onFormSuccess which enables actions after the form is finished
+  - Uses HTML form field validation where applicable
+  - Could be enhanced with better form field validation in future
+*/
 'use client';
 
 import { createSuggestion } from '@/lib/actions/mutations';

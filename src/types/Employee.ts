@@ -1,3 +1,4 @@
+/* Employee related custom types */
 export type Employee = {
   id: string;
   name: string;

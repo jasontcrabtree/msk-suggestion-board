@@ -1,3 +1,10 @@
+/*
+  - Top level component that renders the list of suggestions and filters side by side
+  - Client side component that sets up required state to pass down where needed
+  - Takes in data fetched server side from page.tsx component, renders as provided
+  - Makes use of useMemo to optimise re-renders of the suggestions list based on filter changes
+  - Minor interacitvity to open and close filters
+*/
 'use client';
 
 import SuggestionsList from '@/components/SuggestionsList';

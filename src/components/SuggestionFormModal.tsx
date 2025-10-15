@@ -1,3 +1,8 @@
+/*
+    - Client side component responsible for rendering the suggestion form inside the modal
+    - This has been broken out to lift state up from the suggestion form to the modal to enable close on form completion via callback
+    - The client component specifically is required due to the page component where this is called being server rendered
+*/
 'use client';
 
 import Modal from '@/components/Modal';

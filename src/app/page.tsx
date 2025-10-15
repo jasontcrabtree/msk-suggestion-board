@@ -1,3 +1,10 @@
+/*
+- The main application index page and only route
+- This page is server-side rendered which ensures data can be securely fetched at the top level using async/await
+- As a server-rendered page there is no client interactivity at this level
+- Data feteched on the server is passed as props to various components where used
+*/
+
 import { getEmployees, getSuggestions } from '@/lib/actions/data';
 import SuggestionFormModal from '@/components/SuggestionFormModal';
 import SuggestionsParent from '@/components/SuggestionsParent';
@@ -6,8 +13,6 @@ import { HeartPlus } from 'lucide-react';
 export default async function Home() {
   const suggestionData = await getSuggestions();
   const employees = await getEmployees();
-
-  console.log('employees', employees);
 
   return (
     <div className="flex flex-col">

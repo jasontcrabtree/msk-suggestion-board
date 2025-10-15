@@ -1,3 +1,4 @@
+/* Suggestion related custom types and enums to enable a better dev experience / typechecking */
 export type Suggestion = {
   id: string;
   employeeId: string;

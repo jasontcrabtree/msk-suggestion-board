@@ -1,3 +1,4 @@
+/* DB connection singleton exported for reuse across project */
 import { neon } from '@neondatabase/serverless';
 
 if (!process.env.DATABASE_URL) {

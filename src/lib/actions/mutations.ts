@@ -1,3 +1,8 @@
+/*
+  - Server action to update suggestions by id, create new suggestions via formData
+  - Makes use of revaldiatePath function from nextjs to ensure new data causes a rerender
+  - Same comment about sql as data.ts applies - in bigger cirumcstances might consider additional tools for db access but suitable in some cases
+*/
 'use server';
 
 import { revalidatePath } from 'next/cache';

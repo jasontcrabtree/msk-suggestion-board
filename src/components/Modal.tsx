@@ -1,3 +1,12 @@
+/*
+- Presentational component to display any JSX content passed as "children"
+- Includes because state is passed in from the level above (in this case, SuggestionFormModal)
+we can control the modal based on behaviours that happen in other components
+- This enables us to close the form modal when the form is completed, even though they are two indendent components
+- As well as the main children prop, we also pass in a modalButtonContent prop which allows for custom button content.
+This could have been done using prop.slots but that would have added unneeded complexity
+ */
+
 'use client';
 import { X } from 'lucide-react';
 import { useEffect } from 'react';

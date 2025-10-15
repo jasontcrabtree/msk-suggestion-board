@@ -4,13 +4,12 @@
 - [x] Add sample data to project
 - [x] Deploy dev (main) and production (production) branches, continue to deploy via GH
 - [x] Create initial types: employees, suggestions, department, risk, status, priority, source
-- [ ] Sketch possible layouts based on data
-- [ ] Prototype/iterate on some different filter and layout views
+- [x] Sketch possible layouts based on data
+- [x] Prototype/iterate on some different filter and layout views
 - [x] Suggestion status management
-- [ ] Custom suggestion form
+- [x] Custom suggestion form
 - [x] Add SQLLite for temp data storage (document in readme decision)
-- [ ] UI polish
-- [ ] Add some automated tests where possible
-- [ ] Final review
+- [x] UI polish
+- [x] Final review
 - [ ] Finish README
 - [ ] Document assumptions, architectural decisions, running application instructions

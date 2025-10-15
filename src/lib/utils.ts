@@ -1,3 +1,6 @@
+/*
+  Utility functions to format text, modify dates, filter lists
+*/
 import { Suggestion } from '@/types/Suggestion';
 
 /**

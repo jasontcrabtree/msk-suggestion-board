@@ -1,3 +1,8 @@
+/*
+    - Checkboxes to manipulate the suggestions shown
+    - Selected filters are passed in so we can update them here via passed in state handler and use the selected filters elsewhere at the SuggesitonParent level
+    - This component has primarily been extracted to keep code maintainable
+*/
 import { statuses } from '@/lib/formFields';
 import { formatLabel } from '@/lib/utils';
 import { Dispatch, SetStateAction } from 'react';

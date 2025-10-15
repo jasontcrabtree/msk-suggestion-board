@@ -1,4 +1,8 @@
-'use client';
+/*
+  - Server side presentational component
+  - Displays the list of suggestions provided
+  - Importantly doesn't do any filtering itself, just shows the list of provided items
+*/
 
 import { Suggestion } from '@/types/Suggestion';
 import SuggestionCard from './SuggestionCard';
@@ -19,7 +23,7 @@ const SuggestionsList = ({ suggestions }: { suggestions: Suggestion[] }) => {
         <Lightbulb />
         Suggestions
       </h2>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 mb-6">
         {suggestions.map(suggestion => {
           return <SuggestionCard suggestion={suggestion} key={suggestion.id} />;
         })}

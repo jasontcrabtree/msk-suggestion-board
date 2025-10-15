@@ -10,6 +10,8 @@ body {
     Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+/* Below are some repeated styles defined in the tailwind preferred way of applying classes */
+
 .md-heading {
   @apply text-sm font-bold uppercase tracking-wide flex flex-row items-center gap-1 text-slate-500;
 }

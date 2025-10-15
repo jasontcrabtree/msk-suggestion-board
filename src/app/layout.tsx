@@ -1,3 +1,4 @@
+/* This is the basic layout page for the app which handles core html structure, loading css, loading fonts and some basic metadata */
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
