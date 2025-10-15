@@ -48,7 +48,7 @@ const SuggestionCard = ({ suggestion }: { suggestion: Suggestion }) => {
           </div>
 
           <div className="flex flex-row w-full justify-between items-start gap-8">
-            <div>
+            <div className="w-[60%]">
               <p>
                 <span className="font-semibold text-slate-600">Reported: </span>
                 {formatDate(suggestion.dateCreated)}
@@ -59,7 +59,7 @@ const SuggestionCard = ({ suggestion }: { suggestion: Suggestion }) => {
                 </span>
                 {formatDate(suggestion.dateUpdated)}
               </p>
-              <div>
+              <div className="flex flex-nowrap flex-row gap-1">
                 <span className="font-semibold text-slate-600">
                   Completed:{' '}
                 </span>

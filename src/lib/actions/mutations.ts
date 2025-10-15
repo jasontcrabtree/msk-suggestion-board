@@ -16,6 +16,20 @@ export async function updateStatus({
   suggestionStatus: string;
 }) {
   try {
+    if (suggestionStatus === 'completed') {
+      await dbConnection`
+        UPDATE suggestions
+        SET status = ${suggestionStatus},
+            "dateCompleted" = NOW()
+        WHERE id = ${id};
+    `;
+
+      // Refetch page
+      revalidatePath('/');
+
+      return;
+    }
+
     await dbConnection`
         UPDATE suggestions
         SET status = ${suggestionStatus}

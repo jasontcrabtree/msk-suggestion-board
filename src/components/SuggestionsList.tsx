@@ -11,7 +11,7 @@ import { Lightbulb } from 'lucide-react';
 const SuggestionsList = ({ suggestions }: { suggestions: Suggestion[] }) => {
   if (suggestions.length === 0) {
     return (
-      <div className="h-screen md:h-[92vh] flex items-center justify-center w-full text-lg text-slate-600">
+      <div className="h-screen text-center items-start md:text-left md:h-[92vh] flex md:items-center justify-center w-full text-lg text-slate-600 p-6 md:p-0">
         No suggestions found, update filters for more results ...
       </div>
     );

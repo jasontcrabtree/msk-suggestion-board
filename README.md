@@ -53,6 +53,7 @@ User experience assumptions
 - Suggestion statuses only need to be updated one at a time, no batch update functionality has been provided
 - Changes to suggestion statuses should be made immediately with no step to check them
 - As this is a dashboard for admins, all results are visible to everyone using the dashboard
+- Once a suggestion has been marked as completed the first time, dateCompleted shouldn't change
 
 ## Architectural Decisions:
 

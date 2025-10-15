@@ -11,5 +11,5 @@
 - [x] Add SQLLite for temp data storage (document in readme decision)
 - [x] UI polish
 - [x] Final review
-- [ ] Finish README
-- [ ] Document assumptions, architectural decisions, running application instructions
+- [x] Finish README
+- [x] Document assumptions, architectural decisions, running application instructions
